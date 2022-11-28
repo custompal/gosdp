@@ -271,7 +271,9 @@ func DecodeSession(b []byte, s Session) (Session, error) {
 			line.Value = s[:l+1][l].Value[:0]
 		}
 		if err = line.Decode(scanner.Line()); err != nil {
-			break
+			//break
+			err = nil
+			continue
 		}
 		s = append(s, line)
 		line.Value = nil // not corrupting.
